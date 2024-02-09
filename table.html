@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplication Table Generator</title>
+</head>
+<body>
+    <button onclick="table()">Generate Table</button>
+    <p id="table"></p>
+
+    <script>
+        function table() {
+            let a = parseInt(prompt("Enter a number:"));
+            let tableContent = ""; 
+
+            for (let i = 1; i <= 10; i++) {
+                let result = a * i;
+                tableContent += a + " * " + i + " = " + result + "<br>";  
+            }
+
+            document.getElementById("table").innerHTML = tableContent;  
+        }
+    </script>
+</body>
+</html>

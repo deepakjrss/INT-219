@@ -1,0 +1,23 @@
+.rounded-box {
+    width: 200px;
+    height: 200px;
+    background-color: #3498db;
+    border-radius: 20px;
+    
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+.center{
+    
+    width: 100px;
+    height: 100px;
+    background-color:beige;
+    border-radius: 10px;
+    
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

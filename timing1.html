@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Timer</title>
+    <style>
+    .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+}
+
+#displayTime {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+    </style>
+    <body>
+    <div class="container">
+        <h1>Interactive Timer</h1>
+        <div class="buttons">
+            <button id="startButton">Start</button>
+            <button id="stopButton" disabled>Stop</button>
+        </div>
+        <div></div>
+        <div id="displayTime"></div>
+    </div>
+    <script>
+        const startButton = document.getElementById('startButton');
+        const stopButton = document.getElementById('stopButton');
+        const displayTime = document.getElementById('displayTime');
+        let intervalId = null;
+        startButton.addEventListener('click', () => {
+            if (intervalId === null) {
+        intervalId = setInterval(() => {
+            const now = new Date();
+            const formattedTime = now.toLocaleTimeString();
+            displayTime.textContent = formattedTime;
+        }, 1000);
+        startButton.disabled = true;
+        stopButton.disabled = false;
+    }
+});
+
+stopButton.addEventListener('click', () => {
+    if (intervalId !== null) {
+        clearInterval(intervalId);
+        intervalId = null;
+        stopButton.disabled = true;
+        startButton.disabled = false;
+    }
+});
+
+    </script>
+</body>
+</html>

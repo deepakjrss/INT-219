@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add event listener</title>
+</head>
+<body>
+    <button id="btn">click</button>
+    <p id="click"></p>
+    <script>
+        let c=document.getElementById("btn");
+        c.addEventListener("click", ()=>
+        function fun(){
+            c.style.backgroundColor="blue";
+            //document.body.style.backgroundColor="green";
+        });
+        c.addEventListener("click", ()=>{
+            document.getElementById("demo").innerHtml="text";
+        });
+        c.removeEventListener('click',fun);
+    </script>
+    </body>
+</html>

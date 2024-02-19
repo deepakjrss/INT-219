@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <h#>this is an example of using the setTimeout() method</h>
+   <p>here counter value will be incfrement from 0 to 5 and then stop</p>
+   <p id="p1"></p>
+   <script>
+    let counter=0;c=5;
+    const intervalId=setInterval(function(){
+        if(counter<=c){
+            document.getElementById('p1').innerHTML="counter value is:"+counter;
+            counter++;
+        }
+        if(counter==4){
+            clearInterval(intervalId);
+
+        }
+    }, 1000);
+   </script>
+
+</body>
+</html>

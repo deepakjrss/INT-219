@@ -3,8 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login Form</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        form {
+            background-color: #f1f1f1;
+            padding: 40px;
+            border-radius: 5px;
+            width: 300px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            margin-bottom: 15px;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 0.8rem;
+            margin-bottom: 5px;
+            display: none;
+        }
+
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    
+    <form id="loginForm" action="#">
+        <h1>Login</h1>
+        <label for="name">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <span class="error-message" id="usernameError"></span>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <span class="error-message" id="emailError"></span>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <span class="error-message" id="passwordError"></span>
+        <button type="submit">Login</button>
+    </form>
+
+    <script>
+        const form = document.getElementById('loginForm');
+        const usernameInput = document.getElementById('username');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const usernameError = document.getElementById('usernameError');
+        const emailError = document.getElementById('emailError');
+        const passwordError = document.getElementById('passwordError');
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            let isValid = true;
+
+            // Username validation
+            if (usernameInput.value.trim() === '') {
+                usernameError.textContent = 'Username is required.';
+                usernameError.style.display = 'block';
+                isValid = false;
+            } else {
+                usernameError.style.display = 'none';
+            }
+            if(usernameInput.value.length<3){
+                usernameError.textContent='UserName must be atleast of 3 characters long.';
+                usernameError.style.display='block';
+                isValid=false;
+            }else{
+                usernameError.style.display='none';
+            }
+
+            // Email validation
+            if (!/\S+@\S+\.\S+/.test(emailInput.value)) {
+                emailError.textContent = 'Please enter a valid email address.';
+                emailError.style.display = 'block';
+                isValid = false;
+            } else {
+                emailError.style.display = 'none';
+            }
+
+            // Password validation (example: minimum length of 8 characters)
+            if (passwordInput.value.length < 8) {
+                passwordError.textContent = 'Password must be at least 8 characters long.';
+                passwordError.style.display = 'block';
+                isValid = false;
+            } else {
+                passwordError.style.display = 'none';
+            }
+
+            if (isValid) {
+                // Handle successful form submission (e.g., send data to server)
+                console.log('Form submitted successfully!');
+            }
+        });
+    </script>
+</body>
 </html>

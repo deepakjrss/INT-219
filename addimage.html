@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add and Remove Image and Modify Text</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      const imageUrl = "https://images.bhaskarassets.com/web2images/521/2022/07/01/lpu-730x5481_1656656176.jpg";
+      let imageAdded = false;
+      let isModified = false;
+
+      $("#add-button").click(function() {
+        if (!imageAdded) {
+          const newImage = $('<img src="' + imageUrl + '" alt="Image">');
+          $("#image-container").append(newImage);
+          imageAdded = true;
+        }
+      });
+
+      $("#remove-button").click(function() {
+        if (imageAdded) {
+          $("#image-container img").remove();
+          imageAdded = false;
+        }
+      });
+
+      $("#modify-button").click(function() {
+        if (!isModified) {
+          $("#text-line1").text("Hello, Welcome to LPU");
+          $("#text-line2").text("Fine, thank you! How are you?");
+          isModified = true;
+        }
+      });
+
+      $("#reset-button").click(function() {
+        if (isModified) {
+          $("#text-line1").text("LPU");
+          $("#text-line2").text("How are you?");
+          isModified = false;
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <div id="text-container">
+    <p id="text-line1">LPU</p>
+    <p id="text-line2">How are you?</p>
+  </div>
+
+  <div id="button-container">
+    <button id="add-button">Add Image</button>
+    <button id="remove-button">Remove Image</button>
+    <button id="modify-button">After</button>
+    <button id="reset-button">Before</button>
+  </div>
+
+  <div id="image-container">
+  </div>
+</body>
+</html>

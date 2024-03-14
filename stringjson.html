@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Example</title>
+</head>
+<body>
+    <h1>JSON Example</h1>
+    <div id="jsonStringDisplay"></div>
+    <div id="jsonObjectDisplay"></div>
+    <div id="parsedJsonObjectDisplay"></div>
+
+    <script>
+        const person = {
+            "name": "deepak",
+            "age": 20,
+            "address": {
+                "city": "Phagwara",
+                "state": "Punjab",
+                "zip": "60052"
+            },
+            "details": {
+                "email": "deepak@example.com",
+                "phone": "84660XXXXX"
+            }
+        };
+  
+        const jsonString = JSON.stringify(person, null, 2);
+
+        document.getElementById("jsonStringDisplay").innerHTML = `<h2>JSON String:</h2><pre>${jsonString}</pre>`;
+
+        document.getElementById("jsonObjectDisplay").innerHTML = `<h2>Original JSON Object:</h2><pre>${JSON.stringify(person, null, 2)}</pre>`;
+
+        const parsedJsonObject = JSON.parse(jsonString);
+
+        document.getElementById("parsedJsonObjectDisplay").innerHTML = `<h2>Parsed JSON Object:</h2><pre>${JSON.stringify(parsedJsonObject, null, 2)}</pre>`;
+    </script>
+</body>
+</html>
